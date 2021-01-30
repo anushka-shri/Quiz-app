@@ -6,17 +6,46 @@ const Question = ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
   const [error, setError] = useState('');
   const radiosWrapper = useRef();
     
+  useEffect(() => {
+    const findCheckedInput =
+      radiosWrapper.current.querySelector('input:checked')
+  
+    if (findCheckedInput)
+    {
+      findCheckedInput.checked = false;
+     }
+  }, [data])
    
 
     const changeHandler = (e) => {
-        setSelected(e.target.value);
+      setSelected(e.target.value);
+      
+      if (error) {
+        setError('')
+      }
     }
 
     const nextClickHandler = (e) => {
         if (selected === '')
         {
             return setError('please enter value')
-            }
+      }
+      
+      onAnswerUpdate(prevState =>
+        [...prevState, { q: data.question, a: selected }])
+      
+      setSelected('');
+
+
+      //if its not the last question
+      if (activeQuestion < numberOfQuestions - 1)
+      {
+        onSetActiveQuestion(activeQuestion + 1)
+      }
+      //if its the last question
+      else {
+        onSetStep(3);
+      }
     }
 
     return(
