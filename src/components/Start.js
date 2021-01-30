@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Start = ({ quizStart}) => {
+const Start = ({ onQuizStart}) => {
     
     return (
         <div className='card'>
@@ -9,7 +9,7 @@ const Start = ({ quizStart}) => {
                     <h1>Start the quiz</h1>
                     <p>Good Luck!</p>
                     <button className='button is-info is-medium'
-                    onClick={quizStart}>
+                    onClick={onQuizStart}>
                         Start
                     </button>
                 </div>

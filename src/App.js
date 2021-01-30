@@ -13,16 +13,17 @@ const App = () => {
     setStep(2);
   }
   return (
-    <div className="App">
-    {step === 1 && <Start onQuizStart={quizStartHandler} />}
-      {step === 2 && <Question data={quizData.data[activeQuestion]}
+      <div className="App">
+      {step === 1 && <Start onQuizStart={quizStartHandler} />}
+      {step === 2 && <Question 
+        data={quizData.data[activeQuestion]}
         onAnswerUpdate={setAnswers}
         numberOfQuestions={quizData.data.length}
         activeQuestion={activeQuestion}
         onSetActiveQuestion={setActiveQuestion}
         onSetStep={setStep}
       />}
-    </div>
+      </div>
   );
 }
 

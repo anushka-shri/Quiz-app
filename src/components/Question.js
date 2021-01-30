@@ -1,50 +1,47 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 
-const Question = ({ data, onAnwerUpdate, numberOfQuestions,
-activeQuestion, onSetActiveQuestion, onSetStep}) => {
+const Question = ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, onSetActiveQuestion, onSetStep }) => {
+  const [selected, setSelected] = useState('');
+  const [error, setError] = useState('');
+  const radiosWrapper = useRef();
+    
+   
 
-    const nextClick = (e) => {
-        
+    const changeHandler = (e) => {
+        setSelected(e.target.value);
     }
 
-    return (
-        <div className="card">
-            <div className="card-content">
+    const nextClickHandler = (e) => {
+        if (selected === '')
+        {
+            return setError('please enter value')
+            }
+    }
+
+    return(
+    <div className="card">
+      <div className="card-content">
                 <div className="content">
-                    <h2 >
-                        Question here
-                    </h2>
-                    <label className="radio has-backgroung-light">
-                        <input type="radio" name="answer" value='' 
-                            onChange={() => { }} />
-                        
-                      Choose an option
-                    </label>
-                     <label className="radio has-backgroung-light">
-                        <input type="radio" name="answer" value='' 
-                            onChange={() => { }} />
-                        
-                      Choose an option
-                    </label>
-                     <label className="radio has-backgroung-light">
-                        <input type="radio" name="answer" value='' 
-                            onChange={() => { }} />
-                        
-                      Choose an option
-                    </label>
-                </div>
-
-                <button className="button is-link is-medium is-full-width mt4"
-                    onClick={nextClick}>
-                    Next
-
-                </button>
-            </div>
+                       
+          <h2 className="mb-5">{data.question}</h2>
+          <div className="control" ref={radiosWrapper}>
+            {data.choices.map((choice, i) => (
+              <label className="radio has-background-light" key={i}>
+                <input type="radio" name="answer" value={choice} onChange={changeHandler} />
+                {choice}
+              </label>
+            ))}
+          </div>
+           {error && <div className="has-text-danger">{error}</div>}
+          <button className="button is-link is-medium is-fullwidth mt-4" onClick={nextClickHandler}>Next</button>
         </div>
-    )
+      </div>
+    </div>
+  );
+}
     
 
-};
+
 
 export default Question;
