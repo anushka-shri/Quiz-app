@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {formatTime} from '../utils/index'
 
-const End = ({results, data, onReset, onAnswerCheck, time }) => {
+const End = ({results, data, onReset, onAnswerUpdate, time }) => {
     
     
 const [correctAnswers, setCorrectAnswers] = useState('');
@@ -30,7 +30,7 @@ const [correctAnswers, setCorrectAnswers] = useState('');
                     <p> {Math.floor((correctAnswers / data.length) * 100)} %</p>
                     <p> your time is {formatTime(time)}</p>
                     <button className="button is-primary" onClick={onReset}> Try Again</button>
-                    <button className="button is-link" onClick={onAnswerCheck}> Check Answer</button>
+                    <button className="button is-link" onClick={onAnswerUpdate}> Check Answer</button>
     </div>
   </div>
 </div>

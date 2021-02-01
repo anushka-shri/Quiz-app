@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 
-const Question = ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, onSetActiveQuestion, onSetStep }) => {
+const Question = ({ data, onAnswerUpdate, numberOfQuestions,
+  activeQuestion, onSetActiveQuestion, onSetStep }) => {
   const [selected, setSelected] = useState('');
   const [error, setError] = useState('');
   const radiosWrapper = useRef();

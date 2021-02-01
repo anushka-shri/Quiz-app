@@ -61,20 +61,18 @@ function App() {
         onSetStep={setStep}
 
       />}
-      {step === 3 && <End
-        
+      {step === 3 && <End 
         results={answers}
         data={quizdata.data}
         onReset={resetHandler}
-        onAnswerCheck={() => setShowModal(true) }
+        onAnswerUpdate={() => setShowModal(true)}
         time={time}
       />}
 
-      {showModal && <Modal
-      
-        data={quizdata.data}
+      {showModal && <Modal 
+        onClose={() => setShowModal(false)}
         results={answers}
-        onClose={setShowModal(false)}
+        data={quizdata.data}
       />}
     </div>
   );
