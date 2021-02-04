@@ -22,6 +22,7 @@ const End = ({
 		});
 
 		setCorrectAnswers(correct);
+		// eslint-disable-next-line 
 	}, []);
 
 	return (
