@@ -1,8 +1,27 @@
+.light-theme{
+
+  --clr--background: #efbbcf!important;
+  --clr--card: #ffd5cd;
+  --clr--button: #c3aed6 !important;
+}
+
+.dark-theme{
+
+  
+  --clr--background: #ad6c80 !important;
+  --clr--card: #ee99a0 !important;
+  --clr--button:  #94b5c0 !important;
+}
+
+
+
+
 .App {
   display: flex;
   text-align: center;
   justify-content: center;
   min-height: 100%;
+  background-color: var(--clr--background);
 }
 
 .App .card {
@@ -11,6 +30,11 @@
   max-width: 40vw;
   width: 100%;
   text-align: center;
+  background-color:var(--clr--card);
+}
+
+.is-info2{
+  background-color: var(--clr--button) !important;
 }
 
 label.radio {

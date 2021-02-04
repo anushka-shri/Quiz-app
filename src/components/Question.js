@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 
 const Question = ({ data, onAnswerUpdate, numberOfQuestions,
-  activeQuestion, onSetActiveQuestion, onSetStep }) => {
+  activeQuestion, onSetActiveQuestion, onSetStep,onChangeThemeName, togglingTheme }) => {
   const [selected, setSelected] = useState('');
   const [error, setError] = useState('');
   const radiosWrapper = useRef();
@@ -49,7 +49,15 @@ const Question = ({ data, onAnswerUpdate, numberOfQuestions,
       }
     }
 
-    return(
+  return (
+    
+    <div>
+       <div>
+                <button className='button is-info2 is-medium toggle-btn' onClick={togglingTheme}>
+                    Change Theme {onChangeThemeName}
+                </button> 
+            </div>
+
     <div className="card">
       <div className="card-content">
                 <div className="content">
@@ -65,9 +73,12 @@ const Question = ({ data, onAnswerUpdate, numberOfQuestions,
           </div>
            {error && <div className="has-text-danger">{error}</div>}
           <button className="button is-link is-medium is-fullwidth mt-4" onClick={nextClickHandler}>Next</button>
-        </div>
+          </div>
+          
+          
       </div>
-    </div>
+      </div>
+      </div>
   );
 }
     

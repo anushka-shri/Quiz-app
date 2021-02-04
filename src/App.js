@@ -8,6 +8,14 @@ import quizdata from './data/quizData.json';
 
 let interval;
 
+const getStorageTheme = () => {
+  let theme = 'light-theme';
+  if (localStorage.getItem('theme')) {
+    theme = localStorage.getItem('theme');
+  }
+  return theme;
+};
+
 function App() {
 
   const [step, setStep] = useState(1);
@@ -16,6 +24,38 @@ function App() {
   const [time, setTime] = useState(0);
 
   const [showModal, setShowModal] = useState(false);
+
+  const [theme, setTheme] = useState(getStorageTheme());
+
+  const [themeName, setThemeName] = useState();
+
+ 
+ function togglingTheme(){
+    toggleTheme();
+    onChangeThemeName();
+  }
+
+  const onChangeThemeName = () => {
+    if (themeName === 'Dark') {
+      setThemeName('Light')
+    } else {
+      setThemeName('Dark')
+    }
+  }
+
+  const toggleTheme = () => {
+    if (theme === 'light-theme') {
+      setTheme('dark-theme')
+    } else {
+      setTheme('light-theme')
+    }
+  }
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
 
 
   const resetHandler = () => {
@@ -51,7 +91,12 @@ function App() {
 
   return (
     <div className="App">
-      {step === 1 && <Start onQuizStart={quizStartHandler}/>}
+      {step === 1 && <Start 
+      onQuizStart={quizStartHandler}
+      toggleTheme ={toggleTheme}
+      onChangeThemeName={themeName}
+      togglingTheme={togglingTheme}
+    />}
       {step === 2 && <Question
         data={quizdata.data[activeQuestion]}
         onAnswerUpdate={setAnswer}
@@ -59,21 +104,33 @@ function App() {
         activeQuestion={activeQuestion}
         onSetActiveQuestion={setActiveQuestion}
         onSetStep={setStep}
+        toggleTheme ={toggleTheme}
+      onChangeThemeName={themeName}
+      togglingTheme={togglingTheme}
+       />}
+       
 
-      />}
+      
       {step === 3 && <End 
         results={answers}
         data={quizdata.data}
         onReset={resetHandler}
         onAnswerUpdate={() => setShowModal(true)}
         time={time}
-      />}
+        toggleTheme ={toggleTheme}
+      onChangeThemeName={themeName}
+      togglingTheme={togglingTheme}
+        />}
+      
 
       {showModal && <Modal 
         onClose={() => setShowModal(false)}
         results={answers}
         data={quizdata.data}
-      />}
+        toggleTheme ={toggleTheme}
+      onChangeThemeName={themeName}
+      togglingTheme={togglingTheme}
+     />}
     </div>
   );
 }

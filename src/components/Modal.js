@@ -25,6 +25,7 @@ const Modal = ({ onClose, results, data }) => {
             ))}
           </ul>
         </section>
+
       </div>
     </div>
   );
