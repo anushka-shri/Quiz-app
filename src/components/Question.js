@@ -71,7 +71,7 @@ const Question = ({ data, onAnswerUpdate, numberOfQuestions,
               </label>
             ))}
           </div>
-           {error && <div className="has-text-danger">{error}</div>}
+           {error && <div className="has-text-white">{error}</div>}
           <button className="button is-link is-medium is-fullwidth mt-4" onClick={nextClickHandler}>Next</button>
           </div>
           

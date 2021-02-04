@@ -20,21 +20,27 @@
   display: flex;
   text-align: center;
   justify-content: center;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: var(--clr--background);
 }
 
 .App .card {
 
   margin-top:10%;
-  max-width: 40vw;
+  min-width: 50vw;
   width: 100%;
+   height: 68vh;
   text-align: center;
   background-color:var(--clr--card);
 }
 
 .is-info2{
   background-color: var(--clr--button) !important;
+}
+
+.is-info3{
+  background-color: var(--clr--button) !important;
+  font-size: 1.5rem !important;
 }
 
 label.radio {

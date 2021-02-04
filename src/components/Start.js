@@ -18,10 +18,10 @@ const Start = ({ onQuizStart, ontoggleTheme, onChangeThemeName, togglingTheme}) 
                 <div className='card-content'>
                     <div className='content'>
                         <h1 className="start-h1" >Start the quiz</h1>
-                        <p>Good Luck!</p>
+                        <h2>Good Luck!</h2>
                         <br />
                         <br />
-                        <button className='button is-info2 is-medium' onClick={onQuizStart}>
+                        <button className='button is-info3 is-medium' onClick={onQuizStart}>
                             Start
                         </button>
                     </div>
